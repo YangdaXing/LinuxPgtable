@@ -51,8 +51,8 @@ static unsigned long pud_table(unsigned long vaddr)
      printk("vaddr_t = %lx\n",vaddr_t); 
      for(i=0;i<512;i++) 
      { 
-         vaddr_tmp = vaddr_t |(i<<30); 
-         printk("vaddr_tmp_%lx = %lx",i,vaddr_tmp); 
+         vaddr_tmp = vaddr_t |(i<<30);//pud_shift = 30 
+         printk("vaddr_tmp_%lu = %lx",i,vaddr_tmp); 
             //获取页上级目录PUD */
          pud_tmp = pud_offset(p4d, vaddr_tmp);//获得pud的地址 
          printk("pud_val_%lu = 0x%lx, pud_index_%lu = %lu\n", i,pud_val(*pud_tmp),i,pud_index(vaddr_tmp));//打印pud地址和索引 */
@@ -79,7 +79,7 @@ static unsigned long pmd_table(unsigned long vaddr)
      for(i=0;i<512;i++) 
      { 
          vaddr_tmp = vaddr_t |(i<<21); 
-         printk("vaddr_tmp_%lx = %lx",i,vaddr_tmp); 
+         printk("vaddr_tmp_%lu = %lx",i,vaddr_tmp); 
             //获取页上级目录pmd */
          pmd_tmp = pmd_offset(pud, vaddr_tmp);//获得pmd的地址 
          printk("pmd_val_%lu = 0x%lx, pmd_index_%lu = %lu\n", i,pmd_val(*pmd_tmp),i,pmd_index(vaddr_tmp));//打印pud地址和索引 */
@@ -106,7 +106,7 @@ static unsigned long pte_table(unsigned long vaddr)
      for(i=0;i<512;i++) 
      { 
          vaddr_tmp = vaddr_t |(i<<12); 
-         printk("vaddr_tmp_%lx = %lx",i,vaddr_tmp); 
+         printk("vaddr_tmp_%lu = %lx",i,vaddr_tmp); 
             //获取页上级目录pte */
          pte_tmp = pte_offset_kernel(pmd, vaddr_tmp);//获得pte的地址 
          printk("pte_val_%lu = 0x%lx, pte_index_%lu = %lu\n", i,pte_val(*pte_tmp),i,pte_index(vaddr_tmp));//打印pud地址和索引 */
