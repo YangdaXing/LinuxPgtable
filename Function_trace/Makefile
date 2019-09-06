@@ -1,5 +1,5 @@
 #产生目标文件
-obj-m:=regist_kprobe.o
+obj-m:=PgdKprobe.o
 #路径变量，指明当前路径
 CURRENT_PATH:=$(shell pwd)
 #指明内核版本号
