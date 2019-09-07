@@ -2,10 +2,6 @@
 #include <linux/module.h>
 #include <linux/kprobes.h>
 
-#define MAX_SYMBOL_LEN    64
-static char symbol[MAX_SYMBOL_LEN] = "_do_fork";
-module_param_string(symbol, symbol, sizeof(symbol), 0644);
-
 /* For each probe you need to allocate a kprobe structure */
 static struct kprobe kp = {
    .symbol_name    = "pgd_val"
@@ -29,8 +25,7 @@ static int handler_pre(struct kprobe *p, struct pt_regs *regs)
 }
 
 /* kprobe post_handler: called after the probed instruction is executed */
-static void handler_post(struct kprobe *p, struct pt_regs *regs,
-                unsigned long flags)
+static void handler_post(struct kprobe *p, struct pt_regs *regs,unsigned long flags)
 {
 #ifdef CONFIG_X86
     pr_info("<%s> post_handler: p->addr = %pF, flags = 0x%lx\n",
