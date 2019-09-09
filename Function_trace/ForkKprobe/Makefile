@@ -1,5 +1,5 @@
 #产生目标文件
-obj-m:=ForkKprobe.o
+obj-m:=kprobe_example.o
 #路径变量，指明当前路径
 CURRENT_PATH:=$(shell pwd)
 #指明内核版本号
@@ -12,3 +12,5 @@ all:
 #清理模块
 clean:
 	make -C $(LINUX_KERNEL_PATH) M=$(CURRENT_PATH) clean
+	
+
