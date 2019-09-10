@@ -19,7 +19,7 @@ int jp_do_alloc(gfp_t gfp_mask, unsigned int order)
 
 static __init int jprobes_alloc_init(void)
 {    
-    alloc_jp.kp.symbol_name = "pgd_offset";
+    alloc_jp.kp.symbol_name = "alloc_pages";
 
     alloc_jp.entry = JPROBE_ENTRY(jp_do_alloc);
 
