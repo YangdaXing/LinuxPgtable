@@ -29,7 +29,7 @@
 #include <linux/mm_types.h>
 #include <linux/export.h>
 
-static char func_name[NAME_MAX] = "do_fork";
+static char func_name[NAME_MAX] = "__get_free_pages";
 module_param_string(func, func_name, NAME_MAX, S_IRUGO);
 MODULE_PARM_DESC(func, "Function to kretprobe; this module will report the"
 			" function's execution time");
